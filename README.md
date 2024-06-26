@@ -33,6 +33,11 @@ pd.get('/incidents')
   .then({data, resource, next} => console.log(data, resource, next))
   .catch(console.error);
 
+// Filtering by incident status
+pd.get('/incidents', { queryParameters: { 'statuses[]': ['triggered'] } })
+  .then({data, resource, next} => console.log(data, resource, next))
+  .catch(console.error);
+
 // Similarly, for `post`, `put`, `patch` and `delete`.
 pd.post('/incidents', { data: { ... } }).then(...);
 
